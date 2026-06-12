@@ -1,0 +1,2398 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="html-tag">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="site-title">Hollow Games | تحميل الألعاب والبرامج</title>
+    
+    <link rel="icon" href="main-image.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #080612;
+            --container-bg: #110e26;
+            --accent-color: #ff4757;
+            --accent-glow: rgba(255, 71, 87, 0.3);
+            --uptodown-blue: #00d2d3;
+            --text-color: #ffffff;
+            --text-muted: #a5a1ca;
+            --card-bg: #181436;
+            --neon-blue: #00c3ff;
+            --neon-purple: #b500ff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background-color: rgba(17, 14, 38, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            border-bottom: 1px solid #251f4f;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .header-container {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .logo-img {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 2px solid var(--accent-color);
+        }
+
+        .highlight {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        @media (min-width: 480px) {
+            nav ul { gap: 20px; }
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 14px;
+        }
+
+        @media (min-width: 480px) {
+            nav a { font-size: 16px; }
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--text-color);
+        }
+
+        .btn-lang, .btn-admin {
+            background-color: #1c183a;
+            border: 1px solid #2d265c;
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+        }
+
+        @media (min-width: 480px) {
+            .btn-lang, .btn-admin {
+                padding: 8px 16px;
+                gap: 8px;
+                font-size: 14px;
+            }
+        }
+
+        .btn-lang:hover, .btn-admin:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 12px var(--accent-glow);
+        }
+
+        .hero {
+            position: relative;
+            padding: 60px 0;
+            text-align: center;
+            background: linear-gradient(rgba(8, 6, 18, 0.82), rgba(8, 6, 18, 0.95)), url('main-image.jpg') no-repeat center center/cover;
+            border-bottom: 1px solid #251f4f;
+            margin-bottom: 30px;
+        }
+
+        @media (min-width: 768px) {
+            .hero { padding: 120px 0; margin-bottom: 40px; }
+        }
+
+        .hero h1 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            font-weight: 800;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        @media (min-width: 768px) {
+            .hero h1 { font-size: 42px; }
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        @media (min-width: 768px) {
+            .hero p { font-size: 18px; }
+        }
+
+        .admin-panel {
+            background-color: var(--container-bg);
+            padding: 20px;
+            border-radius: 16px;
+            border: 2px dashed var(--accent-color);
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        @media (min-width: 768px) { .admin-panel { padding: 30px; } }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #2d265c;
+            padding-bottom: 15px;
+        }
+
+        .panel-header h2 { font-size: 18px; }
+        @media (min-width: 768px) { .panel-header h2 { font-size: 24px; } }
+
+        .btn-close {
+            background: none;
+            border: none;
+            color: var(--accent-color);
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: bold;
+        }
+
+        .form-grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        @media (min-width: 768px) {
+            .form-grid-layout { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-bottom: 20px; }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            background-color: #080612;
+            border: 1px solid #2d265c;
+            color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.3s;
+            font-size: 14px;
+        }
+
+        @media (min-width: 768px) {
+            .form-group input, .form-group select, .form-group textarea { padding: 12px; }
+        }
+
+        .form-group input[type="file"] {
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: var(--uptodown-blue);
+        }
+
+        .desc-translation-box {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        @media (min-width: 768px) {
+            .desc-translation-box { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 20px; }
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--accent-color), #ff6b81);
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s, opacity 0.3s;
+        }
+
+        @media (min-width: 768px) { .btn-submit { padding: 15px 30px; font-size: 16px; } }
+
+        .btn-submit:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .content-section {
+            padding-bottom: 40px;
+        }
+
+        .section-title {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #1d193b;
+            padding-bottom: 15px;
+        }
+
+        @media (min-width: 768px) {
+            .section-title {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 30px;
+            }
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            width: 100%;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .filter-buttons::-webkit-scrollbar {
+            display: none;
+        }
+
+        @media (min-width: 768px) { .filter-buttons { width: auto; padding-bottom: 0; } }
+
+        .filter-btn {
+            background-color: var(--container-bg);
+            border: 1px solid #2d265c;
+            color: var(--text-muted);
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            white-space: nowrap;
+            font-weight: 600;
+            transition: all 0.2s;
+            font-size: 13px;
+        }
+
+        @media (min-width: 768px) { .filter-btn { padding: 8px 18px; font-size: 14px; } }
+
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--uptodown-blue);
+            color: #fff;
+            border-color: var(--uptodown-blue);
+            box-shadow: 0 4px 12px rgba(0, 210, 211, 0.3);
+        }
+
+        .search-bar-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            max-width: 650px;
+            margin: 0 auto 30px auto;
+            background: var(--container-bg);
+            border: 1px solid #2d265c;
+            padding: 6px 12px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .search-input-box {
+            position: relative;
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-input-box i {
+            position: absolute;
+            right: 12px;
+            color: var(--text-muted);
+            font-size: 16px;
+        }
+
+        html[dir="ltr"] .search-input-box i {
+            right: auto;
+            left: 12px;
+        }
+
+        .search-input-box input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: #fff;
+            padding: 10px 38px 10px 12px;
+            outline: none;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        html[dir="ltr"] .search-input-box input {
+            padding: 10px 12px 10px 38px;
+        }
+
+        .uptodown-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+            gap: 15px;
+            padding: 10px 0;
+        }
+
+        @media (min-width: 480px) { .uptodown-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 25px; } }
+
+        .mini-app-card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s;
+            border: 1px solid #251f4f;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+            justify-content: flex-start;
+        }
+
+        @media (min-width: 480px) { .mini-app-card { padding: 16px; } }
+
+        .mini-app-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 210, 211, 0.15);
+            border-color: var(--uptodown-blue);
+        }
+
+        .mini-app-icon {
+            width: 65px;
+            height: 65px;
+            border-radius: 16px;
+            object-fit: cover;
+            margin-bottom: 10px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+        }
+
+        @media (min-width: 480px) { .mini-app-icon { width: 85px; height: 85px; border-radius: 22px; margin-bottom: 12px; } }
+
+        .mini-app-card h3 {
+            font-size: 13px;
+            color: #fff;
+            font-weight: 600;
+            margin-top: 4px;
+            line-height: 1.4;
+            word-wrap: break-word;
+            overflow: visible;
+            display: block;
+            width: 100%;
+        }
+        @media (min-width: 480px) { .mini-app-card h3 { font-size: 14px; } }
+
+        .presentation-page {
+            background: radial-gradient(circle at center, #1a2639 0%, #080612 100%);
+            padding: 30px 0;
+            animation: fadeInPage 0.4s ease-in-out;
+        }
+
+        .video-player-frame {
+            width: 100%;
+            max-width: 720px;
+            height: 240px;
+            border-radius: 12px;
+            border: 1px solid #32296c;
+            background: #080612;
+            outline: none;
+        }
+
+        @media (min-width: 480px) {
+            .video-player-frame {
+                height: 360px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .video-player-frame {
+                height: 420px;
+            }
+        }
+
+        .btn-back-library {
+            background-color: #1a153a;
+            border: 1px solid #32296c;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-bottom: 25px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+
+        .btn-back-library:hover {
+            border-color: var(--uptodown-blue);
+            box-shadow: 0 0 10px rgba(0, 210, 211, 0.4);
+        }
+
+        .presentation-container {
+            background: rgba(20, 29, 43, 0.8);
+            border-radius: 24px;
+            padding: 25px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        @media (min-width: 768px) { .presentation-container { padding: 40px; } }
+
+        .main-info-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        @media (min-width: 992px) {
+            .main-info-layout { flex-direction: row; justify-content: space-between; align-items: flex-start; }
+        }
+
+        .rating-sidebar {
+            flex: 0 0 220px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+            background: rgba(0, 0, 0, 0.25);
+            padding: 25px 15px;
+            border-radius: 18px;
+            border: 1px solid #233145;
+        }
+
+        .vote-row {
+            display: flex;
+            gap: 15px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .vote-action-btn {
+            background: #141d2b;
+            border: 2px solid #233145;
+            border-radius: 14px;
+            padding: 12px;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            flex: 1;
+            max-width: 85px;
+        }
+
+        .vote-action-btn i { font-size: 20px; margin-bottom: 6px; display: block; }
+        .vote-action-btn span { font-weight: bold; font-size: 14px; }
+
+        .vote-action-btn.like:hover, .vote-action-btn.like.active {
+            border-color: #2ec4b6; color: #2ec4b6; box-shadow: 0 0 12px rgba(46, 196, 182, 0.4);
+        }
+        .vote-action-btn.dislike:hover, .vote-action-btn.dislike.active {
+            border-color: #e63946; color: #e63946; box-shadow: 0 0 12px rgba(230, 57, 70, 0.4);
+        }
+
+        .popularity-track {
+            width: 100%;
+            background: #233145;
+            border-radius: 20px;
+            height: 26px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .popularity-fill {
+            background: linear-gradient(90deg, #2ec4b6, #00f5d4);
+            height: 100%;
+            width: 0%;
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .popularity-lbl {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 12px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 1px 1px 2px #000;
+        }
+
+        .presentation-details-center {
+            flex: 1;
+        }
+
+        .presentation-title {
+            font-size: 26px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+        @media (min-width: 768px) { .presentation-title { font-size: 34px; } }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .spec-card-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,255,255,0.03);
+            padding: 12px 18px;
+            border-radius: 12px;
+            border-right: 4px solid var(--neon-blue);
+        }
+
+        .spec-card-item .lbl { color: var(--neon-blue); font-weight: bold; display: flex; align-items: center; gap: 8px; }
+        .spec-card-item .val { color: #e5e5e5; font-weight: 600; }
+
+        .desc-block-area {
+            margin-top: 25px;
+            background: rgba(0,0,0,0.15);
+            padding: 20px;
+            border-radius: 14px;
+            border: 1px solid #201a44;
+        }
+
+        .desc-block-area h3 {
+            font-size: 16px;
+            color: #fff;
+            margin-bottom: 12px;
+            border-right: 4px solid var(--uptodown-blue);
+            padding-right: 10px;
+        }
+        html[dir="ltr"] .desc-block-area h3 { border-right: 0; border-left: 4px solid var(--uptodown-blue); padding-left: 10px; }
+
+        .desc-block-area p { color: var(--text-muted); font-size: 14px; line-height: 1.7; white-space: pre-wrap; }
+
+        .download-action-zone {
+            margin-top: 30px;
+            text-align: center;
+            background: #14102d;
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px dashed var(--neon-blue);
+        }
+
+        .big-download-btn {
+            background: linear-gradient(135deg, var(--neon-blue), #0083b0);
+            color: #fff;
+            padding: 14px 45px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 5px 20px rgba(0, 195, 255, 0.4);
+            transition: all 0.3s;
+        }
+
+        .big-download-btn:hover:not(:disabled) {
+            box-shadow: 0 0 30px rgba(0, 195, 255, 0.7);
+            transform: translateY(-3px);
+        }
+
+        .countdown-timer-box {
+            margin-top: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+        .countdown-timer-box span { color: var(--neon-blue); font-size: 22px; font-weight: 800; }
+
+        .final-link-btn {
+            background: linear-gradient(135deg, #2ec4b6, #00f5d4);
+            color: #fff;
+            padding: 12px 35px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(46, 196, 182, 0.4);
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.04); }
+            100% { transform: scale(1); }
+        }
+
+        .presentation-media-right {
+            flex: 0 0 240px;
+            width: 100%;
+            position: relative;
+            text-align: center;
+        }
+
+        .big-app-cover {
+            width: 100%;
+            max-width: 240px;
+            border-radius: 24px;
+            box-shadow: 0 0 25px rgba(0, 195, 255, 0.25);
+            border: 2px solid var(--neon-blue);
+        }
+
+        .active-status-tag {
+            position: absolute;
+            bottom: 15px;
+            right: 50%;
+            transform: translateX(50%);
+            background: linear-gradient(45deg, var(--neon-purple), #7209b7);
+            padding: 6px 20px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: bold;
+            box-shadow: 0 0 15px rgba(181, 0, 255, 0.6);
+            white-space: nowrap;
+        }
+
+        /* ستايل الصور المصغرة واللايتبوكس */
+        .sc-img-holder {
+            width: 100%;
+            height: 150px;
+            border-radius: 12px;
+            border: 1px solid #32296c;
+            overflow: hidden;
+            background-color: #080612;
+            cursor: pointer;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .sc-img-holder:hover {
+            transform: scale(1.05);
+            border-color: var(--uptodown-blue);
+        }
+        .sc-img-holder img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+            backdrop-filter: blur(5px);
+        }
+        .lightbox-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 900px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 210, 211, 0.5);
+            animation: zoomIn 0.3s;
+        }
+        @keyframes zoomIn {
+            from {transform:scale(0)} 
+            to {transform:scale(1)}
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .lightbox-close:hover,
+        .lightbox-close:focus {
+            color: var(--accent-color);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* تصميم كارت التليجرام */
+        .telegram-floating-card {
+            position: fixed;
+            bottom: 85px;
+            left: 25px;
+            background: #141a29;
+            border: 2px solid #24a1de;
+            border-radius: 16px;
+            padding: 12px 20px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 9999;
+            cursor: move;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            user-select: none;
+        }
+
+        .telegram-floating-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(36, 161, 222, 0.4);
+        }
+
+        .telegram-floating-card span {
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .telegram-floating-card .tg-avatar-circle {
+            background: #24a1de;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+
+        /* تنسيق زر لوحة التحكم والتعديل */
+        .admin-toggle-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 195, 255, 0.4);
+            z-index: 999;
+            transition: all 0.3s ease;
+            display: none; /* مخفي افتراضياً، يظهر للآدمن فقط */
+            align-items: center;
+            gap: 8px;
+        }
+        .admin-toggle-btn.show-btn {
+            display: flex;
+        }
+        .admin-toggle-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(181, 0, 255, 0.6);
+        }
+
+        /* تنسيق النافذة المنبثقة للتعديل (Edit Modal) */
+        .admin-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(8, 6, 18, 0.85);
+            backdrop-filter: blur(8px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 21000;
+        }
+        .admin-modal-content {
+            background-color: var(--container-bg);
+            border: 2px solid #1f1947;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 650px;
+            padding: 25px;
+            box-shadow: 0 0 30px rgba(0, 193, 255, 0.2);
+            animation: fadeIn 0.4s ease forwards;
+        }
+        .admin-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #1f1947;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        .admin-modal-header h3 {
+            color: var(--neon-blue);
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .admin-action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        .action-btn {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: white;
+        }
+        .save-action {
+            background-color: #2ed573;
+            box-shadow: 0 4px 10px rgba(46, 213, 115, 0.2);
+        }
+        .save-action:hover { background-color: #26af5f; transform: translateY(-2px); }
+        .delete-action {
+            background-color: var(--accent-color);
+            box-shadow: 0 4px 10px rgba(255, 71, 87, 0.2);
+        }
+        .delete-action:hover { background-color: #e03d4c; transform: translateY(-2px); }
+
+        footer {
+            background-color: #0c0a1a;
+            padding: 30px 0;
+            border-top: 1px solid #251f4f;
+            color: var(--text-muted);
+            margin-top: 40px;
+        }
+        @media (min-width: 768px) { footer { padding: 40px 0; margin-top: 60px; } }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+        @media (min-width: 576px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+        @media (min-width: 992px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr; gap: 30px; margin-bottom: 30px; } }
+
+        .footer-brand h3 { color: #fff; font-size: 22px; margin-bottom: 12px; }
+        .footer-brand p { font-size: 14px; line-height: 1.6; }
+        .footer-links h4, .footer-contact h4 { color: #fff; font-size: 16px; margin-bottom: 12px; }
+
+        .footer-social-btns { display: flex; gap: 12px; margin-top: 10px; flex-wrap: wrap; }
+
+        .social-icon-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            background-color: #161233;
+            border: 1px solid #2d265c;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-icon-btn.fb:hover { background-color: #1877f2; border-color: #1877f2; box-shadow: 0 0 10px rgba(24, 119, 242, 0.5); }
+        .social-icon-btn.tg:hover { background-color: #24a1de; border-color: #24a1de; box-shadow: 0 0 10px rgba(36, 161, 222, 0.5); }
+        .social-icon-btn.gm:hover { background-color: #ea4335; border-color: #ea4335; box-shadow: 0 0 10px rgba(234, 67, 53, 0.5); }
+
+        .footer-bottom { text-align: center; border-top: 1px solid #1a153a; padding-top: 20px; font-size: 13px; }
+        @media (min-width: 768px) { .footer-bottom { font-size: 14px; } }
+
+        .hidden { display: none !important; }
+
+        .btn-delete {
+            background: linear-gradient(135deg, #d63031, #ff7675);
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-delete:hover { opacity: 0.9; transform: scale(1.02); }
+    </style>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+</head>
+<body>
+
+    <div id="main-website-layout">
+        <header>
+            <div class="container header-container">
+                <div class="logo" id="secret-logo-trigger">
+                    <img src="main-image.jpg" alt="Hollow Games Logo" class="logo-img">
+                    <span>Hollow <span class="highlight">Games</span></span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#hero" id="nav-home" class="active">الرئيسية</a></li>
+                        <li><a href="#content-section" id="nav-library">المكتبة</a></li>
+                        <li><button id="lang-btn" class="btn-lang"><i class="fa-solid fa-globe"></i> English</button></li>
+                        <li><button id="admin-login-btn" class="btn-admin hidden"><i class="fa-solid fa-lock"></i> <span id="nav-admin">الإدارة</span></button></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section id="hero" class="hero">
+            <div class="container">
+                <h1 id="hero-title">مرحباً بك في <span class="highlight">Hollow Games🎮</span></h1>
+                <p id="hero-desc">منصتك الاحترافية الأولى لتحميل أحدث ألعاب الكمبيوتر والأندرويد والبرامج الأساسية بروابط مباشرة ومجانية بالكامل و بدون نوافذ منبثقة 👌🎮</p>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="search-bar-wrapper">
+                <div class="search-input-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="search-input" placeholder="ابحث عن لعبة أو برنامج...">
+                </div>
+                <button id="user-login-nav-btn" class="btn-lang">
+                    <i class="fa-solid fa-user"></i> 
+                    <span id="lbl-nav-login">تسجيل الدخول</span>
+                </button>
+            </div>
+        </div>
+
+        <section id="admin-panel" class="container admin-panel hidden">
+            <div class="panel-header">
+                <h2><i class="fa-solid fa-user-shield"></i> لوحة التحكم الحصرية (Anas Only)</h2>
+                <button id="close-admin" class="btn-close"><span id="admin-close-text">إغلاق اللوحة</span> <i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="add-item-form">
+                <div class="form-grid-layout">
+                    <div class="form-group">
+                        <label id="lbl-type">نوع المادة المضافة:</label>
+                        <select id="item-type" required>
+                            <option value="game" id="opt-game">لعبة كمبيوتر 🎮</option>
+                            <option value="program" id="opt-program">برنامج كمبيوتر 💻</option>
+                            <option value="android-game" id="opt-android-game">لعبة أندرويد 📱🎮</option>
+                            <option value="android-app" id="opt-android-app">تطبيق أندرويد 📱⚙️</option>
+                            <option value="os" id="opt-os">نظام تشغيل 💿⚙️</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label id="lbl-image">رابط صورة الأيقونة المصغرة:</label>
+                        <input type="text" id="item-image" required placeholder="مثال: logo.png أو رابط خارجي">
+                    </div>
+                    <div class="form-group">
+                        <label id="lbl-link">رابط أو مسار ملف التحميل المباشر:</label>
+                        <input type="text" id="item-link" required placeholder="مثال: game.zip أو رابط ميديا فاير">
+                    </div>
+                    <div class="form-group">
+                        <label id="lbl-video">رابط أو مسار فيديو توضيحي (محلّي أو يوتيوب):</label>
+                        <input type="text" id="item-video" placeholder="مثال: assets/video.mp4 أو رابط يوتيوب">
+                    </div>
+                </div>
+
+                <div class="desc-translation-box">
+                    <div class="form-group">
+                        <label>اسم المادة (باللغة العربية):</label>
+                        <input type="text" id="item-title-ar" required placeholder="مثال: ويندوز 11 برو مفعل">
+                    </div>
+                    <div class="form-group">
+                        <label>Item Title (in English):</label>
+                        <input type="text" id="item-title-en" required placeholder="e.g., Windows 11 Pro Activated">
+                    </div>
+                </div>
+
+                <div class="desc-translation-box">
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-user-shield"></i> الناشر (بالعربية أو الإنجليزية):</label>
+                        <input type="text" id="item-publisher" placeholder="مثال: Microsoft أو EA">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-code"></i> المطور (بالعربية أو الإنجليزية):</label>
+                        <input type="text" id="item-developer" placeholder="مثال: Team Cherry">
+                    </div>
+                </div>
+
+                <div class="form-grid-layout">
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-certificate"></i> نوع الترخيص (عربي):</label>
+                        <input type="text" id="item-license-ar" placeholder="مثال: مجاني بالكامل، مفعل مدى الحياة">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-certificate"></i> License Type (English):</label>
+                        <input type="text" id="item-license-en" placeholder="e.g., Free / Activated">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-thumbs-up"></i> إعجابات مبدئية:</label>
+                        <input type="number" id="item-likes" value="120">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-thumbs-down"></i> عدم إعجاب مبدئي:</label>
+                        <input type="number" id="item-dislikes" value="5">
+                    </div>
+                </div>
+
+                <div class="form-grid-layout" style="margin-bottom: 20px;">
+                    <div class="form-group">
+                        <label style="color: var(--uptodown-blue); font-size: 13px;"><i class="fa-solid fa-image"></i> صورة توضيحية 1:</label>
+                        <input type="file" id="item-setup-file-1" accept="image/*">
+                    </div>
+                    <div class="form-group">
+                        <label style="color: var(--uptodown-blue); font-size: 13px;"><i class="fa-solid fa-image"></i> صورة توضيحية 2 (اختياري):</label>
+                        <input type="file" id="item-setup-file-2" accept="image/*">
+                    </div>
+                    <div class="form-group">
+                        <label style="color: var(--uptodown-blue); font-size: 13px;"><i class="fa-solid fa-image"></i> صورة توضيحية 3 (اختياري):</label>
+                        <input type="file" id="item-setup-file-3" accept="image/*">
+                    </div>
+                    <div class="form-group">
+                        <label style="color: var(--uptodown-blue); font-size: 13px;"><i class="fa-solid fa-image"></i> صورة توضيحية 4 (اختياري):</label>
+                        <input type="file" id="item-setup-file-4" accept="image/*">
+                    </div>
+                </div>
+
+                <div class="desc-translation-box">
+                    <div class="form-group">
+                        <label>الوصف المفصل باللغة العربية:</label>
+                        <textarea id="item-desc-ar" rows="3" required placeholder="اكتب تفاصيل المادة..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>الوصف المفصل باللغة الإنجليزية:</label>
+                        <textarea id="item-desc-en" rows="3" required placeholder="Write item details..."></textarea>
+                    </div>
+                </div>
+
+                <div class="desc-translation-box">
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-star"></i> مميزات النسخة الخاصة بنا (باللغة العربية):</label>
+                        <textarea id="item-features-ar" rows="3" placeholder="مثال: مضاف إليها مودات الترجمة الحصرية، فتح جميع العناصر..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-star"></i> Our Edition Features (in English):</label>
+                        <textarea id="item-features-en" rows="3" placeholder="e.g., Included exclusive translation mods, unlocked all features..."></textarea>
+                    </div>
+                </div>
+
+                <div class="desc-translation-box">
+                    <div class="form-group">
+                        <label id="lbl-input-req-ar"><i class="fa-solid fa-microchip"></i> متطلبات التشغيل (باللغة العربية):</label>
+                        <textarea id="item-req-ar" rows="3" placeholder="مثال: المعالج i5، الرام 8 جيجا، كارت الشاشة GTX 1050..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label id="lbl-input-req-en"><i class="fa-solid fa-microchip"></i> System Requirements (in English):</label>
+                        <textarea id="item-req-en" rows="3" placeholder="e.g., CPU i5, RAM 8 GB, GPU GTX 1050..."></textarea>
+                    </div>
+                </div>
+
+                <div class="desc-translation-box">
+                    <div class="form-group">
+                        <label id="lbl-setup-ar"><i class="fa-solid fa-gears"></i> خطوات طريقة التثبيت (بالعربية):</label>
+                        <textarea id="item-setup-ar" rows="3" required placeholder="1- حرق ملف الـ ISO على فلاشة..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label id="lbl-setup-en"><i class="fa-solid fa-gears"></i> Installation Guide Steps (in English):</label>
+                        <textarea id="item-setup-en" rows="3" required placeholder="1- Burn the ISO file to a flash drive..."></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" id="btn-publish" class="btn-submit">نشر وتعميم المادة فوراً على الموقع</button>
+            </form>
+        </section>
+
+        <section id="content-section" class="content-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="section-heading">المكتبة الحالية</h2>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all" id="filter-all"><i class="fa-solid fa-list-ul"></i> الكل</button>
+                        <button class="filter-btn" data-filter="game" id="filter-games"><i class="fa-solid fa-gamepad"></i> ألعاب PC</button>
+                        <button class="filter-btn" data-filter="program" id="filter-programs"><i class="fa-solid fa-laptop-code"></i> برامج PC</button>
+                        <button class="filter-btn" data-filter="android-game" id="filter-android-games"><i class="fa-solid fa-mobile-screen-button"></i> ألعاب أندرويد</button>
+                        <button class="filter-btn" data-filter="android-app" id="filter-android-apps"><i class="fa-solid fa-mobile-screen"></i> تطبيقات أندرويد</button>
+                        <button class="filter-btn" data-filter="os" id="filter-os"><i class="fa-solid fa-hard-drive"></i> أنظمة تشغيل</button>
+                    </div>
+                </div>
+                
+                <div id="items-grid" class="uptodown-grid"></div>
+            </div>
+        </section>
+    </div>
+
+
+    <div id="presentation-full-page" class="presentation-page hidden">
+        <div class="container">
+            <button class="btn-back-library" onclick="closePresentationPage()">
+                <i class="fa-solid fa-arrow-right"></i> <span id="lbl-back-btn">رجوع إلى المكتبة الرئيسية</span>
+            </button>
+
+            <div class="presentation-container">
+                <div class="main-info-layout">
+                    
+                    <div class="rating-sidebar">
+                        <div class="vote-row">
+                            <button class="vote-action-btn dislike" id="presentation-dislike-btn">
+                                <i class="fa-solid fa-thumbs-down"></i>
+                                <span id="p-dislike-count">0</span>
+                            </button>
+                            <button class="vote-action-btn like" id="presentation-like-btn">
+                                <i class="fa-solid fa-thumbs-up"></i>
+                                <span id="p-like-count">0</span>
+                            </button>
+                        </div>
+                        <div style="font-size: 12px; color: var(--text-muted); text-align: center;">
+                            <span id="lbl-total-votes-text">إجمالي التقييمات:</span> <span id="p-total-votes">0</span>
+                        </div>
+                        <div class="popularity-track">
+                            <div class="popularity-fill" id="p-pop-bar"></div>
+                            <div class="popularity-lbl" id="p-pop-text">الشعبية 0%</div>
+                        </div>
+                    </div>
+
+                    <div class="presentation-details-center">
+                        <h1 class="presentation-title" id="p-title">اسم المادة</h1>
+                        
+                        <div class="specs-grid">
+                            <div class="spec-card-item">
+                                <span class="lbl"><i class="fa-solid fa-user-shield"></i> <span id="lbl-spec-pub">الناشر</span></span>
+                                <span class="val" id="p-publisher">غير محدد</span>
+                            </div>
+                            <div class="spec-card-item">
+                                <span class="lbl"><i class="fa-solid fa-code"></i> <span id="lbl-spec-dev">المطور</span></span>
+                                <span class="val" id="p-developer">غير محدد</span>
+                            </div>
+                            <div class="spec-card-item">
+                                <span class="lbl"><i class="fa-solid fa-certificate"></i> <span id="lbl-spec-lic">الترخيص</span></span>
+                                <span class="val" id="p-license">نشط ومفعل</span>
+                            </div>
+                        </div>
+
+                        <div class="desc-block-area">
+                            <h3 id="lbl-desc-heading">الوصف التفصيلي</h3>
+                            <p id="p-desc">تفاصيل الوصف هنا...</p>
+                        </div>
+
+                        <div class="desc-block-area" id="p-features-area" style="margin-top:15px;">
+                            <h3 id="lbl-features-heading">مميزات النسخة الخاصة بنا</h3>
+                            <p id="p-features">المميزات هنا...</p>
+                        </div>
+
+                        <div class="desc-block-area" id="p-req-area" style="margin-top:15px;">
+                            <h3 id="lbl-req-heading">🖥️ متطلبات التشغيل</h3>
+                            <p id="p-req">المتطلبات هنا...</p>
+                        </div>
+
+                        <div id="p-screenshot-section-wrap" class="desc-block-area hidden" style="margin-top:15px; border-right: 4px solid #ffb703;">
+                            <h3 id="lbl-sc-title"><i class="fa-solid fa-camera"></i> صور توضيحية لعملية التثبيت والتشغيل الفعلي</h3>
+                            <div id="p-setup-images-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; width: 100%; margin-top: 15px;"></div>
+                        </div>
+
+                        <div class="desc-block-area" style="margin-top:15px;">
+                            <h3 id="lbl-setup-heading">طريقة التشغيل والتثبيت</h3>
+                            <p id="p-setup">خطوات التشغيل...</p>
+                        </div>
+
+                        <div class="desc-block-area hidden" id="p-video-area" style="margin-top:15px;">
+                            <h3 id="lbl-video-heading">🎬 فيديو توضيحي لطريقة التثبيت والتشغيل</h3>
+                            <div id="p-video-container" style="margin-top: 15px; text-align: center; width: 100%;"></div>
+                        </div>
+
+                        <div class="download-action-zone">
+                            <button class="big-download-btn" id="p-start-timer-btn">
+                                <i class="fa-solid fa-circle-down"></i> <span id="lbl-start-dl">ابدأ تجهيز رابط التحميل</span>
+                            </button>
+                            <div id="p-timer-container" class="countdown-timer-box hidden">
+                                <span id="lbl-timer-prefix">يرجى الانتظار ثانية لتجهيز السيرفر:</span> <span id="p-countdown">45</span>
+                            </div>
+                            <div id="p-final-link-wrap" class="hidden" style="margin-top:15px;"></div>
+                        </div>
+
+                        <div class="desc-block-area" style="margin-top:25px; border-top: 3px solid var(--neon-blue);">
+                            <h3 id="lbl-comments-title"><i class="fa-solid fa-comments"></i> تعليقات ومراجعات الزوار</h3>
+                            
+                            <div id="comment-input-zone" style="margin-top: 15px; margin-bottom: 20px;"></div>
+                            
+                            <div id="comments-list-container" style="display: flex; flex-direction: column; gap: 12px; margin-top: 15px;"></div>
+                        </div>
+
+                    </div>
+
+                    <div class="presentation-media-right">
+                        <img id="p-cover-img" src="main-image.jpg" alt="App Cover" class="big-app-cover">
+                        <div class="active-status-tag" id="p-badge-type">تطبيق آمن ومفعل</div>
+                    </div>
+
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <div id="lightbox-modal" class="lightbox-modal">
+        <span class="lightbox-close" id="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <div id="auth-modal" class="hidden" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(8, 6, 18, 0.9); z-index: 20000; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px);">
+        <div style="background: var(--container-bg); padding: 30px; border-radius: 20px; width: 90%; max-width: 420px; border: 1px solid #2d265c; position: relative; box-shadow: 0 15px 40px rgba(0,0,0,0.5);">
+            <button id="close-auth-modal" style="position: absolute; top: 15px; right: 15px; background: none; border: none; color: var(--accent-color); font-size: 22px; cursor: pointer;"><i class="fa-solid fa-xmark"></i></button>
+            
+            <h3 id="lbl-modal-auth-title" style="margin-bottom: 20px; text-align: center; font-size: 20px; font-weight: 800; color: #fff;">تسجيل حساب في Hollow Games</h3>
+            
+            <div class="form-group" style="margin-bottom: 15px;">
+                <label id="lbl-auth-email" style="font-size: 13px; color: var(--text-muted);">البريد الإلكتروني الحقيقي:</label>
+                <input type="email" id="user-auth-email" placeholder="name@example.com" style="width:100%; background:#080612; border:1px solid #2d265c; color:#fff; padding:10px; border-radius:8px;">
+            </div>
+            
+            <div class="form-group" style="margin-bottom: 20px;">
+                <label id="lbl-auth-pass" style="font-size: 13px; color: var(--text-muted);">كلمة المرور (6 أحرف أو أكثر):</label>
+                <input type="password" id="user-auth-password" placeholder="******" style="width:100%; background:#080612; border:1px solid #2d265c; color:#fff; padding:10px; border-radius:8px;">
+            </div>
+            
+            <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+                <button id="btn-auth-signin" class="btn-submit" style="padding: 10px; flex: 1;">دخول</button>
+                <button id="btn-auth-signup" class="btn-submit" style="padding: 10px; flex: 1; background: linear-gradient(135deg, var(--neon-blue), #0083b0);">إنشاء حساب</button>
+            </div>
+            
+            <div style="text-align: center; color: var(--text-muted); margin-bottom: 15px; font-size: 13px;" id="lbl-auth-or">أو سجل دخولك سريعاً عبر السيرفر الآمن</div>
+            
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <button id="btn-auth-google" style="background: #ffffff; color: #111; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 14px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);"><i class="fa-brands fa-google" style="color: #ea4335; font-size: 16px;"></i> <span id="lbl-google-text">الدخول بواسطة Google</span></button>
+            </div>
+        </div>
+    </div>
+
+    <button id="admin-panel-btn" class="admin-toggle-btn">
+        <i class="fa-solid fa-gear"></i> لوحة التعديل
+    </button>
+
+    <div id="admin-modal" class="admin-modal-overlay">
+        <div class="admin-modal-content">
+            <div class="admin-modal-header">
+                <h3><i class="fa-solid fa-pen-to-square"></i> تعديل بيانات المادة</h3>
+                <button id="close-admin-modal" class="close-btn">&times;</button>
+            </div>
+            
+            <form id="admin-edit-form">
+                <div class="form-group">
+                    <label for="edit-item-select">اختر العنصر المراد تعديله:</label>
+                    <select id="edit-item-select" required>
+                        <option value="" disabled selected>-- اختر المادة --</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="edit-item-title-ar">الاسم (عربي):</label>
+                        <input type="text" id="edit-item-title-ar" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-item-title-en">الاسم (انجليزي):</label>
+                        <input type="text" id="edit-item-title-en" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-item-category">القسم:</label>
+                    <select id="edit-item-category" required>
+                        <option value="game">ألعاب كمبيوتر</option>
+                        <option value="program">برامج كمبيوتر</option>
+                        <option value="android-game">ألعاب أندرويد</option>
+                        <option value="android-app">تطبيقات أندرويد</option>
+                        <option value="os">أنظمة تشغيل</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="edit-item-video">رابط الفيديو التوضيحي:</label>
+                        <input type="text" id="edit-item-video">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-item-download">رابط التحميل المباشر:</label>
+                        <input type="text" id="edit-item-download" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-item-desc-ar">الوصف (عربي):</label>
+                    <textarea id="edit-item-desc-ar" rows="3" required></textarea>
+                </div>
+
+                <div class="admin-action-buttons">
+                    <button type="submit" id="save-btn" class="action-btn save-action">
+                        <i class="fa-solid fa-floppy-disk"></i> حفظ التعديلات
+                    </button>
+                    <button type="button" id="delete-btn" class="action-btn delete-action">
+                        <i class="fa-solid fa-trash-can"></i> حذف العنصر
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <h3>Hollow <span class="highlight">Games</span></h3>
+                <p id="footer-about">موقعك الأول والآمن للحصول على الألعاب والبرامج بشكل مصغر وسهل التحميل وبأحدث إصدارات لعام 2026.</p>
+            </div>
+            <div class="footer-links">
+                <h4 id="footer-head-links">روابط سريعة</h4>
+                <p><a href="#hero" style="color:var(--text-muted); text-decoration:none;">الصفحة الرئيسية</a></p>
+                <p><a href="#content-section" style="color:var(--text-muted); text-decoration:none; margin-top:8px; display:inline-block;">مكتبة الملفات</a></p>
+            </div>
+            <div class="footer-contact">
+                <h4 id="footer-head-contact">الدعم والتواصل الفني</h4>
+                <p id="footer-contact-desc">يمكنك متابعتنا أو إرسال استفساراتك عبر الروابط الرسمية التالية:</p>
+                <div class="footer-social-btns">
+                    <a href="https://www.facebook.com/share/1DwryNK8Ny/" target="_blank" class="social-icon-btn fb" title="فيسبوك"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://t.me/+3H0YOfya1CkxMjhk" target="_blank" class="social-icon-btn tg" title="قناة تلجرام الرسمية"><i class="fa-brands fa-telegram"></i></a>
+                    <a href="mailto:hollowk425@gmail.com" class="social-icon-btn gm" title="الدعم الفني عبر البريد الإلكتروني"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p id="footer-text">جميع الحقوق محفوظة © 2026 لموقع <span class="highlight">Hollow Games</span> | تطوير وإدارة حصرية</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <a href="https://t.me/+3H0YOfya1CkxMjhk" target="_blank" class="telegram-floating-card" id="draggable-telegram-widget">
+        <div class="tg-avatar-circle"><i class="fa-brands fa-telegram"></i></div>
+        <span id="lbl-floating-tg-text">اشترك بقناة تلجرام ليصلك جديد الألعاب!</span>
+    </a>
+
+    <script>
+        // إعدادات الفايربيس (تأكد من مطابقتها لمشروعك)
+        const firebaseConfig = {
+          apiKey: "AIzaSyBoUX7ycsrCxLV3aaDUkiCsGKO08MGQ2QY",
+          authDomain: "hollow-games-11ea8.firebaseapp.com",
+          databaseURL: "https://hollow-games-11ea8-default-rtdb.firebaseio.com",
+          projectId: "hollow-games-11ea8",
+          storageBucket: "hollow-games-11ea8.firebasestorage.app",
+          messagingSenderId: "307106936498",
+          appId: "1:307106936498:web:b3f1ec348b7162a6087bab",
+          measurementId: "G-194TYHT4S9"
+        };
+
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        }
+
+        const database = firebase.database();
+        const auth = firebase.auth();
+
+        const ADMIN_PASSWORD = "HollowAnas2026"; 
+
+        const adminLoginBtn = document.getElementById('admin-login-btn');
+        const adminPanel = document.getElementById('admin-panel');
+        const closeAdmin = document.getElementById('close-admin');
+        const addItemForm = document.getElementById('add-item-form');
+        const itemsGrid = document.getElementById('items-grid');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const langBtn = document.getElementById('lang-btn');
+        const htmlTag = document.getElementById('html-tag');
+        const searchInput = document.getElementById('search-input');
+
+        const mainWebsiteLayout = document.getElementById('main-website-layout');
+        const presentationFullPage = document.getElementById('presentation-full-page');
+        
+        // عناصر التعديل الخاصة بالأدمن
+        const adminToggleBtn = document.getElementById('admin-panel-btn');
+        const adminModal = document.getElementById('admin-modal');
+        const closeAdminModal = document.getElementById('close-admin-modal');
+        const editItemSelect = document.getElementById('edit-item-select');
+        const adminEditForm = document.getElementById('admin-edit-form');
+        const deleteBtn = document.getElementById('delete-btn');
+
+        const secretLogoTrigger = document.getElementById('secret-logo-trigger');
+        let clickCount = 0;
+        let clickTimeout;
+
+        let isAdmin = false;
+        let currentLang = localStorage.getItem('hollow_lang') || 'ar';
+        let allItemsCached = [];
+        let currentFilter = 'all';
+        let currentActiveItem = null; 
+        let countdownIntervalId = null;
+        let currentCommentsRef = null;
+
+        const translations = {
+            ar: {
+                title: "Hollow Games | تحميل الألعاب والبرامج",
+                home: "الرئيسية", library: "المكتبة", admin: "لوحة التحكم",
+                heroTitle: 'مرحباً بك في <span class="highlight">Hollow Games🎮</span>',
+                heroDesc: "منصتك الاحترافية الأولى لتحميل أحدث ألعاب الكمبيوتر والأندرويد والبرامج الأساسية بروابط مباشرة ومجانية بالكامل و بدون نوافذ منبثقة 👌🎮",
+                lblType: "نوع المادة المضافة:", optGame: "لعبة كمبيوتر 🎮", optProgram: "برنامج كمبيوتر 💻", optAndroidGame: "لعبة أندرويد 📱🎮", optAndroidApp: "تطبيق أندرويد 📱⚙️", optOs: "نظام تشغيل 💿⚙️",
+                lblImage: "رابط صورة الأيقونة المصغرة:",
+                lblLink: "رابط أو مسار ملف التحميل المباشر:", btnPublish: "نشر وتعميم المادة فوراً على الموقع",
+                lblVideo: "رابط أو مسار فيديو توضيحي (محلّي أو يوتيوب):", lblVideoHeading: "🎬 فيديو توضيحي لطريقة التثبيت والتشغيل",
+                sectionHeading: "المكتبة الحالية", filterAll: "<i class='fa-solid fa-list-ul'></i> الكل", filterGames: "<i class='fa-solid fa-gamepad'></i> ألعاب PC", filterPrograms: "<i class='fa-solid fa-laptop-code'></i> برامج PC", filterAndroidGames: "<i class='fa-solid fa-mobile-screen-button'></i> ألعاب أندرويد", filterAndroidApps: "<i class='fa-solid fa-mobile-screen'></i> تطبيقات أندرويد", filterOs: "<i class='fa-solid fa-hard-drive'></i> أنظمة تشغيل",
+                footerAbout: "موقعك الأول والآمن للحصول على الألعاب والبرامج بشكل مصغر وسهل التحميل وبأحدث إصدارات لعام 2026.",
+                footerHeadLinks: "روابط سريعة", footerHeadContact: "الدعم والتواصل الفني",
+                footerContactDesc: "يمكنك متابعتنا أو إرسال استفساراتك عبر الروابط الرسمية التالية:",
+                footerText: 'جميع الحقوق محفوظة © 2026 لموقع <span class="highlight">Hollow Games</span> | تطوير وإدارة حصرية',
+                downloadBtn: "تحميل سريع وآمن", deleteBtn: "حذف نهائي من الموقع", noItems: "لا توجد مواد مطابقة للبحث أو القسم حالياً.",
+                promptPass: "أدخل الرقم السري الحصري الخاص بـ (Anas Only) لفتح الإدارة:", wrongPass: "رقم سري خاطئ! الدخول محمي.", publishSuccess: "تم رفع وتعميم المادة بنجاح على السيرفر السحابي وستظهر للجميع فوراً!",
+                confirmDelete: "هل أنت متأكد من رغبتك في حذف هذا التطبيق نهائياً من الموقع والسيرفر؟",
+                badgeGame: "🎮 ألعاب كمبيوتر PC", badgeProgram: "💻 برامج كمبيوتر PC", badgeAndroidGame: "📱🎮 ألعاب أندرويد", badgeAndroidApp: "📱⚙️ تطبيقات أندرويد", badgeOs: "💿⚙️ أنظمة تشغيل OS",
+                lblBackBtn: "رجوع إلى المكتبة الرئيسية", lblTotalVotesText: "إجمالي التقييمات:", lblSpecPub: "الناشر", lblSpecDev: "المطور", lblSpecLic: "الترخيص",
+                lblDescHeading: "الوصف التفصيلي والشامل", lblSetupHeading: "🛠️ طريقة التشغيل والتثبيت الكاملة", lblStartDl: "اضغط هنا لبدء تجهيز الرابط المباشر",
+                lblTimerPrefix: "جاري فحص وتأمين السيرفر الآمن، يرجى الانتظار:", lblScTitle: "<i class='fa-solid fa-camera'></i> صور توضيحية لعملية التثبيت والتشغيل الفعلي",
+                lblFloatingTgText: "اشترك بقناة تلجرام ليصلك جديد الألعاب فوراً! 🚀", readyDl: "رابط التحميل المباشر جاهز الآن للتحميل بأقصى سرعة!", clickToDl: "اضغط هنا للتحميل المباشر 📥",
+                lblFeaturesHeading: "✨ مميزات النسخة الخاصة بنا",
+                searchPlaceholder: "ابحث عن لعبة أو برنامج...",
+                
+                lblNavLogin: "تسجيل الدخول", lblModalAuthTitle: "تسجيل حساب في Hollow Games", lblAuthEmail: "البريد الإلكتروني الحقيقي:", lblAuthPass: "كلمة المرور (6 أحرف أو أكثر):",
+                lblAuthOr: "أو سجل دخولك سريعاً عبر السيرفر الآمن", lblGoogleText: "الدخول بواسطة Google",
+                lblCommentsTitle: "💬 تعليقات ومراجعات الزوار", commentPlaceholder: "اكتب مراجعتك أو استفسارك حول هذه اللعبة/البرنامج هنا...", btnPostComment: "نشر التعليق الآن",
+                authRequiredComment: "🔒 يرجى تسجيل الدخول أو إنشاء حساب حقيقي لتتمكن من إضافة مراجعة أو تعليق.", noCommentsYet: "لا توجد تعليقات بعد، كن أول من يكتب مراجعة!", loadingComments: "جاري استدعاء مراجعات الزوار...",
+                
+                lblReqHeading: "🖥️ متطلبات تشغيل النظام والملف", lblInputReqAr: "متطلبات التشغيل (باللغة العربية):", lblInputReqEn: "System Requirements (in English):"
+            },
+            en: {
+                title: "Hollow Games | Professional Downloads Store",
+                home: "Home", library: "Library", admin: "Control Panel",
+                heroTitle: 'Welcome to <span class="highlight">Hollow Games🎮</span>',
+                heroDesc: "Your premier professional platform for downloading the latest PC and Android games, and essential software via direct and completely free links, with no pop-up ads 👌🎮",
+                lblType: "Item Category:", optGame: "PC Game 🎮", optProgram: "PC Software 💻", optAndroidGame: "Android Game 📱🎮", optAndroidApp: "Android App 📱⚙️", optOs: "Operating System 💿⚙️",
+                lblImage: "Icon Image Link URL:",
+                lblLink: "Download URL or Local File Path:", btnPublish: "Publish Item Live Instantly",
+                lblVideo: "Explanatory Video Path/Link (Local or YouTube):", lblVideoHeading: "🎬 Explanatory Installation & Gameplay Video",
+                sectionHeading: "Live Grid Library", filterAll: "<i class='fa-solid fa-list-ul'></i> All", filterGames: "<i class='fa-solid fa-gamepad'></i> PC Games", filterPrograms: "<i class='fa-solid fa-laptop-code'></i> PC Software", filterAndroidGames: "<i class='fa-solid fa-mobile-screen-button'></i> Android Games", filterAndroidApps: "<i class='fa-solid fa-mobile-screen'></i> Android Apps", filterOs: "<i class='fa-solid fa-hard-drive'></i> Operating Systems",
+                footerAbout: "Your primary secure hub for premium applications and games featuring clean layouts and direct downloads, updated for 2026.",
+                footerHeadLinks: "Quick Links", footerHeadContact: "Technical Support",
+                footerContactDesc: "Stay connected or contact technical support via our verified channels:",
+                footerText: 'All Rights Reserved © 2026 by <span class="highlight">Hollow Games</span> | Exclusively Managed',
+                downloadBtn: "Download File Now", deleteBtn: "Delete Permanently", noItems: "No items match your search or filter yet.",
+                promptPass: "Enter Secret Admin Password (Anas Only) to unlock panel:", wrongPass: "Access Denied! Secured area.", publishSuccess: "Item successfully published onto cloud database permanently!",
+                confirmDelete: "Are you absolutely sure you want to permanently delete this item from server?",
+                badgeGame: "🎮 PC Games", badgeProgram: "💻 PC Software", badgeAndroidGame: "📱🎮 Android Games", badgeAndroidApp: "📱⚙️ Android Apps", badgeOs: "💿⚙️ Operating Systems",
+                navigatorLogin: "Login Status",
+                lblBackBtn: "Back to Main Catalog", lblTotalVotesText: "Total Feedback Votes:", lblSpecPub: "Publisher", lblSpecDev: "Developer", lblSpecLic: "License Status",
+                lblDescHeading: "Comprehensive Main Description", lblSetupHeading: "🛠️ Setup & Full Installation Guide", lblStartDl: "Click Here To Prepare Direct Link",
+                lblTimerPrefix: "Securing mirror servers, please wait safely:", lblScTitle: "<i class='fa-solid fa-camera'></i> Visual Gameplay/Installation Snapshot Guide",
+                lblFloatingTgText: "Join Telegram Channel For Updates! 🚀", readyDl: "Your direct file download connection is ready!", clickToDl: "Click Here To Start Download 📥",
+                lblFeaturesHeading: "✨ Our Edition Special Features",
+                searchPlaceholder: "Search for a game or software...",
+                
+                lblNavLogin: "Sign In", lblModalAuthTitle: "Join Hollow Games Network", lblAuthEmail: "Real Email Address:", lblAuthPass: "Password (6+ chars):",
+                lblAuthOr: "Or connect instantly via verified secure mirrors", lblGoogleText: "Sign In with Google",
+                lblCommentsTitle: "💬 User Reviews & Comments", commentPlaceholder: "Write your review or feedback about this game/software here...", btnPostComment: "Post Review Now",
+                authRequiredComment: "🔒 Please login or register a real account to submit a review.", noCommentsYet: "No comments posted yet. Be the first to review!", loadingComments: "Fetching community reviews...",
+                
+                lblReqHeading: "🖥️ System Requirements", lblInputReqAr: "System Requirements (Arabic):", lblInputReqEn: "System Requirements (English):"
+            }
+        };
+
+        function applyLanguage() {
+            const t = translations[currentLang];
+            htmlTag.setAttribute('lang', currentLang);
+            htmlTag.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+            document.title = t.title;
+            
+            document.getElementById('nav-home').innerText = t.home;
+            document.getElementById('nav-library').innerText = t.library;
+            document.getElementById('nav-admin').innerText = t.admin;
+            document.getElementById('hero-title').innerHTML = t.heroTitle;
+            document.getElementById('hero-desc').innerText = t.heroDesc;
+            
+            document.getElementById('lbl-type').innerText = t.lblType;
+            document.getElementById('opt-game').innerText = t.optGame;
+            document.getElementById('opt-program').innerText = t.optProgram;
+            document.getElementById('opt-android-game').innerText = t.optAndroidGame;
+            document.getElementById('opt-android-app').innerText = t.optAndroidApp;
+            document.getElementById('opt-os').innerText = t.optOs;
+            
+            document.getElementById('lbl-image').innerText = t.lblImage;
+            document.getElementById('lbl-link').innerText = t.lblLink;
+            document.getElementById('lbl-video').innerText = t.lblVideo;
+            document.getElementById('lbl-video-heading').innerText = t.lblVideoHeading;
+            document.getElementById('btn-publish').innerText = t.btnPublish;
+            
+            document.getElementById('section-heading').innerText = t.sectionHeading;
+            document.getElementById('filter-all').innerHTML = t.filterAll;
+            document.getElementById('filter-games').innerHTML = t.filterGames;
+            document.getElementById('filter-programs').innerHTML = t.filterPrograms;
+            document.getElementById('filter-android-games').innerHTML = t.filterAndroidGames;
+            document.getElementById('filter-android-apps').innerHTML = t.filterAndroidApps;
+            document.getElementById('filter-os').innerHTML = t.filterOs;
+            
+            document.getElementById('footer-about').innerText = t.footerAbout;
+            document.getElementById('footer-head-links').innerText = t.footerHeadLinks;
+            document.getElementById('footer-head-contact').innerText = t.footerHeadContact;
+            document.getElementById('footer-contact-desc').innerText = t.footerContactDesc;
+            document.getElementById('footer-text').innerHTML = t.footerText;
+
+            document.getElementById('lbl-back-btn').innerText = t.lblBackBtn;
+            document.getElementById('lbl-total-votes-text').innerText = t.lblTotalVotesText;
+            document.getElementById('lbl-spec-pub').innerText = t.lblSpecPub;
+            document.getElementById('lbl-spec-dev').innerText = t.lblSpecDev;
+            document.getElementById('lbl-spec-lic').innerText = t.lblSpecLic;
+            document.getElementById('lbl-desc-heading').innerText = t.lblDescHeading;
+            document.getElementById('lbl-features-heading').innerText = t.lblFeaturesHeading;
+            document.getElementById('lbl-req-heading').innerText = t.lblReqHeading;
+            document.getElementById('lbl-input-req-ar').innerHTML = t.lblInputReqAr;
+            document.getElementById('lbl-input-req-en').innerHTML = t.lblInputReqEn;
+            document.getElementById('lbl-setup-heading').innerText = t.lblSetupHeading;
+            document.getElementById('lbl-sc-title').innerHTML = t.lblScTitle;
+            document.getElementById('lbl-floating-tg-text').innerText = t.lblFloatingTgText;
+            
+            document.getElementById('lbl-modal-auth-title').innerText = t.lblModalAuthTitle;
+            document.getElementById('lbl-auth-email').innerText = t.lblAuthEmail;
+            document.getElementById('lbl-auth-pass').innerText = t.lblAuthPass;
+            document.getElementById('lbl-auth-or').innerText = t.lblAuthOr;
+            document.getElementById('lbl-google-text').innerText = t.lblGoogleText;
+            document.getElementById('lbl-comments-title').innerHTML = t.lblCommentsTitle;
+            searchInput.placeholder = t.searchPlaceholder;
+
+            const user = auth.currentUser;
+            if (!user) {
+                document.getElementById('lbl-nav-login').innerText = t.lblNavLogin;
+            }
+
+            langBtn.innerHTML = currentLang === 'ar' ? '<i class="fa-solid fa-globe"></i> English' : '<i class="fa-solid fa-globe"></i> العربية';
+        }
+
+        langBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            localStorage.setItem('hollow_lang', currentLang);
+            applyLanguage();
+            renderMiniItems(currentFilter);
+            if(currentActiveItem) {
+                showAppDetailsInFullPage(currentActiveItem);
+            }
+        });
+
+        searchInput.addEventListener('input', () => {
+            renderMiniItems(currentFilter);
+        });
+
+        secretLogoTrigger.addEventListener('click', () => {
+            clickCount++;
+            clearTimeout(clickTimeout);
+            clickTimeout = setTimeout(() => { clickCount = 0; }, 2000);
+            if (clickCount === 3) {
+                clickCount = 0;
+                triggerAdminAuth();
+            }
+        });
+
+        function triggerAdminAuth() {
+            const t = translations[currentLang];
+            const password = prompt(t.promptPass);
+            if (password === ADMIN_PASSWORD) {
+                isAdmin = true;
+                adminLoginBtn.classList.remove('hidden'); 
+                adminPanel.classList.remove('hidden');
+                adminToggleBtn.classList.add('show-btn'); // إظهار زر التعديل
+                adminPanel.scrollIntoView({ behavior: 'smooth' });
+                renderMiniItems(currentFilter);
+                if(currentActiveItem) showAppDetailsInFullPage(currentActiveItem);
+            } else {
+                alert(t.wrongPass);
+            }
+        }
+
+        adminLoginBtn.addEventListener('click', () => {
+            if (isAdmin) {
+                adminPanel.classList.remove('hidden');
+                adminPanel.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+
+        closeAdmin.addEventListener('click', () => adminPanel.classList.add('hidden'));
+
+        function convertFileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+            });
+        }
+
+        addItemForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            if(!isAdmin) return;
+
+            const title_ar = document.getElementById('item-title-ar').value;
+            const title_en = document.getElementById('item-title-en').value;
+            const type = document.getElementById('item-type').value;
+            const image = document.getElementById('item-image').value;
+            const desc_ar = document.getElementById('item-desc-ar').value;
+            const desc_en = document.getElementById('item-desc-en').value;
+            const features_ar = document.getElementById('item-features-ar').value;
+            const features_en = document.getElementById('item-features-en').value;
+            const req_ar = document.getElementById('item-req-ar').value;
+            const req_en = document.getElementById('item-req-en').value;
+            const setup_ar = document.getElementById('item-setup-ar').value;
+            const setup_en = document.getElementById('item-setup-en').value;
+            const downloadUrl = document.getElementById('item-link').value;
+            const video = document.getElementById('item-video').value; 
+            
+            const publisher = document.getElementById('item-publisher').value || "Hollow Store";
+            const developer = document.getElementById('item-developer').value || "Hollow Team";
+            const license_ar = document.getElementById('item-license-ar').value || "نشط / مفعل بالكامل مجاناً";
+            const license_en = document.getElementById('item-license-en').value || "Fully Activated / Free";
+            const initialLikes = parseInt(document.getElementById('item-likes').value) || 100;
+            const initialDislikes = parseInt(document.getElementById('item-dislikes').value) || 2;
+
+            let setupImagesArray = [];
+            for (let i = 1; i <= 4; i++) {
+                const fileInput = document.getElementById(`item-setup-file-${i}`);
+                if (fileInput && fileInput.files && fileInput.files[0]) {
+                    try {
+                        const base64String = await convertFileToBase64(fileInput.files[0]);
+                        setupImagesArray.push(base64String);
+                    } catch (error) {
+                        console.error("Error converting file " + i, error);
+                    }
+                }
+            }
+
+            const itemId = Date.now().toString();
+            const newItem = {
+                id: itemId, type: type, image: image,
+                downloadUrl: downloadUrl, video: video, 
+                title_ar: title_ar, title_en: title_en,
+                desc_ar: desc_ar, desc_en: desc_en,
+                features_ar: features_ar, features_en: features_en,
+                req_ar: req_ar, req_en: req_en,
+                setup_ar: setup_ar, setup_en: setup_en,
+                setup_imgs: setupImagesArray,
+                publisher: publisher,
+                developer: developer,
+                license_ar: license_ar,
+                license_en: license_en,
+                likes: initialLikes,
+                dislikes: initialDislikes
+            };
+
+            database.ref('items/' + itemId).set(newItem, (error) => {
+                if (error) {
+                    alert("خطأ أثناء الرفع: " + error.message);
+                } else {
+                    addItemForm.reset();
+                    alert(translations[currentLang].publishSuccess);
+                }
+            });
+        });
+
+        // دوال نافذة التعديل للأدمن
+        function refreshAdminSelectOptions() {
+            editItemSelect.innerHTML = '<option value="" disabled selected>-- اختر المادة --</option>';
+            allItemsCached.forEach((item) => {
+                const titleText = currentLang === 'ar' ? (item.title_ar || item.title) : (item.title_en || item.title_ar);
+                const option = document.createElement("option");
+                option.value = item.id;
+                option.textContent = titleText;
+                editItemSelect.appendChild(option);
+            });
+        }
+
+        adminToggleBtn.addEventListener("click", () => {
+            refreshAdminSelectOptions();
+            adminModal.style.display = "flex";
+        });
+
+        closeAdminModal.addEventListener("click", () => {
+            adminModal.style.display = "none";
+            adminEditForm.reset();
+        });
+
+        window.addEventListener("click", (e) => {
+            if (e.target === adminModal) {
+                adminModal.style.display = "none";
+                adminEditForm.reset();
+            }
+        });
+
+        editItemSelect.addEventListener("change", (e) => {
+            const selectedId = e.target.value;
+            const item = allItemsCached.find(i => i.id === selectedId);
+            if (item) {
+                document.getElementById("edit-item-title-ar").value = item.title_ar || item.title || "";
+                document.getElementById("edit-item-title-en").value = item.title_en || "";
+                document.getElementById("edit-item-category").value = item.type || "game";
+                document.getElementById("edit-item-video").value = item.video || "";
+                document.getElementById("edit-item-download").value = item.downloadUrl || "";
+                document.getElementById("edit-item-desc-ar").value = item.desc_ar || "";
+            }
+        });
+
+        adminEditForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const selectedId = editItemSelect.value;
+            if (!selectedId) return;
+
+            const updates = {
+                title_ar: document.getElementById("edit-item-title-ar").value,
+                title_en: document.getElementById("edit-item-title-en").value,
+                type: document.getElementById("edit-item-category").value,
+                video: document.getElementById("edit-item-video").value,
+                downloadUrl: document.getElementById("edit-item-download").value,
+                desc_ar: document.getElementById("edit-item-desc-ar").value
+            };
+
+            database.ref('items/' + selectedId).update(updates, (error) => {
+                if (error) {
+                    alert("خطأ في التحديث: " + error.message);
+                } else {
+                    alert("تم تحديث البيانات بنجاح!");
+                    adminModal.style.display = "none";
+                    adminEditForm.reset();
+                }
+            });
+        });
+
+        deleteBtn.addEventListener("click", () => {
+            const selectedId = editItemSelect.value;
+            if (!selectedId) {
+                alert("يرجى اختيار عنصر أولاً لحذفه.");
+                return;
+            }
+            if (confirm("هل أنت متأكد تماماً من رغبتك في حذف هذا العنصر نهائياً من الموقع؟")) {
+                database.ref('items/' + selectedId).remove((error) => {
+                    if (error) {
+                        alert("خطأ في الحذف: " + error.message);
+                    } else {
+                        alert("تم الحذف بنجاح!");
+                        adminModal.style.display = "none";
+                        adminEditForm.reset();
+                    }
+                });
+            }
+        });
+
+        database.ref('items').on('value', (snapshot) => {
+            const data = snapshot.val();
+            allItemsCached = [];
+            if (data) {
+                Object.keys(data).forEach(key => {
+                    allItemsCached.push(data[key]);
+                });
+                allItemsCached.reverse();
+            }
+            renderMiniItems(currentFilter);
+            
+            if(currentActiveItem) {
+                const updatedItem = allItemsCached.find(i => i.id === currentActiveItem.id);
+                if(updatedItem) {
+                    currentActiveItem = updatedItem;
+                    refreshRatingStatsOnUI();
+                    
+                    // تحديث صفحة العرض إذا كانت مفتوحة
+                    const displayTitle = currentLang === 'ar' ? (updatedItem.title_ar || updatedItem.title) : (updatedItem.title_en || updatedItem.title_ar);
+                    document.getElementById('p-title').innerText = displayTitle;
+                    document.getElementById('p-desc').innerText = currentLang === 'ar' ? updatedItem.desc_ar : updatedItem.desc_en;
+                    
+                    const videoArea = document.getElementById('p-video-area');
+                    const videoContainer = document.getElementById('p-video-container');
+                    if(updatedItem.video && updatedItem.video.trim() !== "") {
+                        const rawVideoUrl = updatedItem.video.trim();
+                        const ytEmbedUrl = getYoutubeEmbedUrl(rawVideoUrl);
+                        if (ytEmbedUrl) {
+                            videoContainer.innerHTML = `<iframe src="${ytEmbedUrl}" class="video-player-frame" style="border: none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+                        } else {
+                            videoContainer.innerHTML = `<video src="${rawVideoUrl}" controls class="video-player-frame"></video>`;
+                        }
+                        videoArea.classList.remove('hidden');
+                    } else {
+                        videoArea.classList.add('hidden');
+                        videoContainer.innerHTML = '';
+                    }
+                } else {
+                    // تم حذفه
+                    closePresentationPage();
+                }
+            }
+        });
+
+        function renderMiniItems(filter = 'all') {
+            currentFilter = filter;
+            itemsGrid.innerHTML = '';
+            const t = translations[currentLang];
+            const queryText = searchInput.value.toLowerCase().trim();
+
+            const filtered = allItemsCached.filter(item => {
+                const matchesFilter = filter === 'all' || item.type === filter;
+                const titleAr = (item.title_ar || '').toLowerCase();
+                const titleEn = (item.title_en || '').toLowerCase();
+                const matchesSearch = queryText === '' || titleAr.includes(queryText) || titleEn.includes(queryText);
+                return matchesFilter && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                itemsGrid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 40px; font-weight:600;">${t.noItems}</p>`;
+                return;
+            }
+
+            filtered.forEach(item => {
+                const displayTitle = currentLang === 'ar' ? (item.title_ar || item.title) : (item.title_en || item.title || item.title_ar);
+                
+                const miniCard = document.createElement('div');
+                miniCard.className = 'mini-app-card';
+                miniCard.innerHTML = `
+                    <img src="${item.image ? item.image : 'main-image.jpg'}" alt="${displayTitle}" class="mini-app-icon" onerror="this.src='main-image.jpg';">
+                    <h3>${displayTitle}</h3>
+                `;
+                
+                miniCard.addEventListener('click', () => showAppDetailsInFullPage(item));
+                itemsGrid.appendChild(miniCard);
+            });
+        }
+
+        function getYoutubeEmbedUrl(url) {
+            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+            const match = url.match(regExp);
+            if (match && match[2].length === 11) {
+                return "https://www.youtube.com/embed/" + match[2];
+            }
+            return null;
+        }
+
+        function showAppDetailsInFullPage(item) {
+            currentActiveItem = item;
+            const t = translations[currentLang];
+            
+            if(countdownIntervalId) clearInterval(countdownIntervalId);
+            document.getElementById('p-start-timer-btn').removeAttribute('disabled');
+            document.getElementById('p-start-timer-btn').style.opacity = "1";
+            document.getElementById('p-timer-container').classList.add('hidden');
+            document.getElementById('p-final-link-wrap').classList.add('hidden');
+            document.getElementById('p-final-link-wrap').innerHTML = '';
+
+            const displayTitle = currentLang === 'ar' ? (item.title_ar || item.title) : (item.title_en || item.title || item.title_ar);
+            
+            document.getElementById('p-title').innerText = displayTitle;
+            document.getElementById('p-cover-img').src = item.image ? item.image : 'main-image.jpg';
+            
+            document.getElementById('p-publisher').innerText = item.publisher || "Hollow Store";
+            document.getElementById('p-developer').innerText = item.developer || "Hollow Team";
+            document.getElementById('p-license').innerText = currentLang === 'ar' ? (item.license_ar || "مفعل بالكامل مجاناً") : (item.license_en || "Activated");
+
+            let badgeText = t.badgeGame;
+            if (item.type === 'program') badgeText = t.badgeProgram;
+            if (item.type === 'android-game') badgeText = t.badgeAndroidGame;
+            if (item.type === 'android-app') badgeText = t.badgeAndroidApp;
+            if (item.type === 'os') badgeText = t.badgeOs;
+            document.getElementById('p-badge-type').innerText = badgeText;
+
+            document.getElementById('p-desc').innerText = currentLang === 'ar' ? item.desc_ar : item.desc_en;
+
+            const featuresArea = document.getElementById('p-features-area');
+            const featuresContent = currentLang === 'ar' ? item.features_ar : item.features_en;
+            if(featuresContent && featuresContent.trim() !== "") {
+                document.getElementById('p-features').innerText = featuresContent;
+                featuresArea.classList.remove('hidden');
+            } else {
+                featuresArea.classList.add('hidden');
+            }
+
+            const reqArea = document.getElementById('p-req-area');
+            const reqContent = currentLang === 'ar' ? item.req_ar : item.req_en;
+            if(reqContent && reqContent.trim() !== "") {
+                document.getElementById('p-req').innerText = reqContent;
+                reqArea.classList.remove('hidden');
+            } else {
+                reqArea.classList.add('hidden');
+            }
+
+            document.getElementById('p-setup').innerText = currentLang === 'ar' ? (item.setup_ar || '') : (item.setup_en || '');
+
+            const videoArea = document.getElementById('p-video-area');
+            const videoContainer = document.getElementById('p-video-container');
+            
+            if(item.video && item.video.trim() !== "") {
+                const rawVideoUrl = item.video.trim();
+                const ytEmbedUrl = getYoutubeEmbedUrl(rawVideoUrl);
+
+                if (ytEmbedUrl) {
+                    videoContainer.innerHTML = `
+                        <iframe src="${ytEmbedUrl}" class="video-player-frame" style="border: none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    `;
+                } else {
+                    videoContainer.innerHTML = `
+                        <video src="${rawVideoUrl}" controls class="video-player-frame"></video>
+                    `;
+                }
+                videoArea.classList.remove('hidden');
+            } else {
+                videoArea.classList.add('hidden');
+                videoContainer.innerHTML = '';
+            }
+
+            const setupPanelWrap = document.getElementById('p-screenshot-section-wrap');
+            const imagesContainer = document.getElementById('p-setup-images-container');
+            imagesContainer.innerHTML = ''; 
+
+            let imagesList = [];
+            if(item.setup_imgs && Array.isArray(item.setup_imgs)) {
+                imagesList = item.setup_imgs;
+            } else if(item.setup_img && item.setup_img.trim() !== "") {
+                imagesList = [item.setup_img]; 
+            }
+
+            if (imagesList.length > 0) {
+                imagesList.forEach(imgData => {
+                    const imgHolder = document.createElement('div');
+                    imgHolder.className = 'sc-img-holder';
+                    imgHolder.innerHTML = `<img src="${imgData}" alt="Setup Step Pic">`;
+                    
+                    imgHolder.addEventListener('click', () => {
+                        const modal = document.getElementById("lightbox-modal");
+                        const modalImg = document.getElementById("lightbox-img");
+                        modal.style.display = "block";
+                        modalImg.src = imgData;
+                    });
+
+                    imagesContainer.appendChild(imgHolder);
+                });
+                setupPanelWrap.classList.remove('hidden');
+            } else {
+                setupPanelWrap.classList.add('hidden');
+            }
+
+            refreshRatingStatsOnUI();
+            loadCommentsForActiveItem(item.id);
+            updateCommentInputZoneUI();
+
+            document.getElementById('presentation-like-btn').onclick = () => registerVoteOnCloud('likes');
+            document.getElementById('presentation-dislike-btn').onclick = () => registerVoteOnCloud('dislikes');
+            document.getElementById('p-start-timer-btn').onclick = () => startDownloadCountdownTimer(item.downloadUrl);
+
+            mainWebsiteLayout.classList.add('hidden');
+            presentationFullPage.classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // إغلاق Lightbox
+        const lightboxModal = document.getElementById('lightbox-modal');
+        const lightboxClose = document.getElementById('lightbox-close');
+        
+        lightboxClose.onclick = function() {
+            lightboxModal.style.display = "none";
+        }
+        
+        lightboxModal.onclick = function(event) {
+            if (event.target === lightboxModal) {
+                lightboxModal.style.display = "none";
+            }
+        }
+
+        function refreshRatingStatsOnUI() {
+            if(!currentActiveItem) return;
+            const item = currentActiveItem;
+            
+            const totalLikes = item.likes || 0;
+            const totalDislikes = item.dislikes || 0;
+            const totalVotes = totalLikes + totalDislikes;
+
+            document.getElementById('p-like-count').innerText = totalLikes;
+            document.getElementById('p-dislike-count').innerText = totalDislikes;
+            document.getElementById('p-total-votes').innerText = totalVotes;
+
+            const popBar = document.getElementById('p-pop-bar');
+            const popText = document.getElementById('p-pop-text');
+
+            if(totalVotes === 0) {
+                popBar.style.width = "0%";
+                popText.innerText = "الشعبية 0%";
+                return;
+            }
+
+            const likePercentage = ((totalLikes / totalVotes) * 100).toFixed(2);
+            popBar.style.width = likePercentage + "%";
+            popText.innerText = (currentLang === 'ar' ? 'الشعبية ' : 'Popularity ') + likePercentage + "%";
+        }
+
+        function registerVoteOnCloud(voteType) {
+            if(!currentActiveItem) return;
+            const itemId = currentActiveItem.id;
+            const localStorageKey = 'voted_' + itemId;
+
+            if(localStorage.getItem(localStorageKey)) {
+                return;
+            }
+
+            database.ref('items/' + itemId + '/' + voteType).transaction((currentCount) => {
+                return (currentCount || 0) + 1;
+            });
+
+            localStorage.setItem(localStorageKey, voteType);
+        }
+
+        function startDownloadCountdownTimer(downloadUrl) {
+            const startBtn = document.getElementById('p-start-timer-btn');
+            const timerBox = document.getElementById('p-timer-container');
+            const countdownDigit = document.getElementById('p-countdown');
+            const finalLinkWrap = document.getElementById('p-final-link-wrap');
+            const t = translations[currentLang];
+
+            startBtn.setAttribute('disabled', 'true');
+            startBtn.style.opacity = "0.4";
+            timerBox.classList.remove('hidden');
+            finalLinkWrap.classList.add('hidden');
+
+            let timeLeft = 45;
+            countdownDigit.innerText = timeLeft;
+
+            countdownIntervalId = setInterval(() => {
+                timeLeft--;
+                countdownDigit.innerText = timeLeft;
+
+                if(timeLeft <= 0) {
+                    clearInterval(countdownIntervalId);
+                    timerBox.classList.add('hidden');
+                    
+                    finalLinkWrap.innerHTML = `
+                        <p style="color: #00f5d4; font-weight: bold; margin-bottom:10px;">${t.readyDl}</p>
+                        <a href="${downloadUrl}" target="_blank" class="final-link-btn"><i class="fa-solid fa-cloud-arrow-down"></i> ${t.clickToDl}</a>
+                    `;
+                    finalLinkWrap.classList.remove('hidden');
+                    startBtn.removeAttribute('disabled');
+                    startBtn.style.opacity = "1";
+                }
+            }, 1000);
+        }
+
+        function closePresentationPage() {
+            if(countdownIntervalId) clearInterval(countdownIntervalId);
+            currentActiveItem = null;
+            if(currentCommentsRef) currentCommentsRef.off();
+            
+            presentationFullPage.classList.add('hidden');
+            mainWebsiteLayout.classList.remove('hidden');
+            
+            document.getElementById('content-section').scrollIntoView({ behavior: 'auto' });
+        }
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                renderMiniItems(e.target.dataset.filter);
+            });
+        });
+
+        const tgCard = document.getElementById('draggable-telegram-widget');
+        let isDragging = false;
+        let hasMoved = false;
+        let startX, startY, initialLeft, initialTop;
+
+        function startDrag(e) {
+            isDragging = true;
+            hasMoved = false;
+            const eventClient = e.type === 'touchstart' ? e.touches[0] : e;
+            startX = eventClient.clientX;
+            startY = eventClient.clientY;
+            
+            const rect = tgCard.getBoundingClientRect();
+            initialLeft = rect.left;
+            initialTop = rect.top;
+            
+            tgCard.style.bottom = 'auto';
+            tgCard.style.right = 'auto';
+            tgCard.style.left = initialLeft + 'px';
+            tgCard.style.top = initialTop + 'px';
+            tgCard.style.animation = 'none';
+
+            if (e.type === 'mousedown') {
+                window.addEventListener('mousemove', dragMove);
+                window.addEventListener('mouseup', stopDrag);
+            } else {
+                window.addEventListener('touchmove', dragMove, { passive: false });
+                window.addEventListener('touchend', stopDrag);
+            }
+        }
+
+        function dragMove(e) {
+            if (!isDragging) return;
+            const eventClient = e.type === 'touchmove' ? e.touches[0] : e;
+            
+            let currentX = eventClient.clientX - startX;
+            let currentY = eventClient.clientY - startY;
+            
+            if (Math.abs(currentX) > 3 || Math.abs(currentY) > 3) {
+                hasMoved = true;
+                if(e.type === 'touchmove') e.preventDefault();
+            }
+            
+            if (hasMoved) {
+                tgCard.style.left = (initialLeft + currentX) + 'px';
+                tgCard.style.top = (initialTop + currentY) + 'px';
+            }
+        }
+
+        function stopDrag(e) {
+            isDragging = false;
+            if (e.type === 'mouseup') {
+                window.removeEventListener('mousemove', dragMove);
+                window.removeEventListener('mouseup', stopDrag);
+            } else {
+                window.removeEventListener('touchmove', dragMove);
+                window.removeEventListener('touchend', stopDrag);
+            }
+        }
+
+        tgCard.addEventListener('mousedown', startDrag);
+        tgCard.addEventListener('touchstart', startDrag, { passive: true });
+
+        tgCard.addEventListener('click', (e) => {
+            if (hasMoved) {
+                e.preventDefault();
+            }
+        });
+
+        const authModal = document.getElementById('auth-modal');
+        const userLoginNavBtn = document.getElementById('user-login-nav-btn');
+        const closeAuthModal = document.getElementById('close-auth-modal');
+        
+        userLoginNavBtn.addEventListener('click', () => {
+            const user = auth.currentUser;
+            if (user) {
+                if (confirm(currentLang === 'ar' ? "هل ترغب في تسجيل الخروج من حسابك الحالي؟" : "Do you want to sign out from your account?")) {
+                    auth.signOut();
+                }
+            } else {
+                authModal.classList.remove('hidden');
+            }
+        });
+        
+        closeAuthModal.addEventListener('click', () => authModal.classList.add('hidden'));
+
+        document.getElementById('btn-auth-signup').addEventListener('click', () => {
+            const email = document.getElementById('user-auth-email').value.trim();
+            const pass = document.getElementById('user-auth-password').value;
+            if (!email || pass.length < 6) {
+                alert(currentLang === 'ar' ? "يرجى إدخال بريد صحيح وكلمة مرور لا تقل عن 6 أحرف" : "Please enter a valid email and 6+ character password");
+                return;
+            }
+            auth.createUserWithEmailAndPassword(email, pass)
+            .then((userCredential) => {
+                alert(currentLang === 'ar' ? "تهانينا! تم إنشاء حسابك الحقيقي بنجاح 🎉" : "Success! Your real account has been created 🎉");
+                authModal.classList.add('hidden');
+            })
+            .catch((error) => alert("Error: " + error.message));
+        });
+
+        document.getElementById('btn-auth-signin').addEventListener('click', () => {
+            const email = document.getElementById('user-auth-email').value.trim();
+            const pass = document.getElementById('user-auth-password').value;
+            auth.signInWithEmailAndPassword(email, pass)
+            .then((userCredential) => {
+                alert(currentLang === 'ar' ? "أهلاً بك مجدداً! تم تسجيل الدخول بنجاح" : "Welcome back! Login successful");
+                authModal.classList.add('hidden');
+            })
+            .catch((error) => alert("Error: " + error.message));
+        });
+
+        document.getElementById('btn-auth-google').addEventListener('click', () => {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            provider.setCustomParameters({ prompt: 'select_account' });
+
+            auth.signInWithPopup(provider)
+            .then((result) => {
+                alert(currentLang === 'ar' ? `مرحباً بك ${result.user.displayName}، تم الدخول عبر Google بنجاح 🚀` : `Welcome ${result.user.displayName}, logged in via Google!`);
+                authModal.classList.add('hidden');
+            })
+            .catch((error) => {
+                console.error("Google Auth Error Logs:", error);
+                if (error.code === 'auth/operation-not-allowed') {
+                    alert("خطأ: تسجيل دخول Google غير مفعل في خيارات مشروع Firebase (Authentication -> Sign-in method).");
+                } else if (error.code === 'auth/auth-domain-config-required') {
+                    alert("خطأ أمني: النطاق الحالي غير مصرح به. تذكر تشغيل المشروع عبر سيرفر محلي (Live Server) وليس بالنقر على الملف مباشرة!");
+                } else {
+                    alert("خطأ في تسجيل دخول جوجل: " + error.message);
+                }
+            });
+        });
+
+        auth.onAuthStateChanged((user) => {
+            const t = translations[currentLang];
+            const navBtnSpan = document.getElementById('lbl-nav-login');
+            
+            if (user) {
+                const userName = user.displayName || user.email.split('@')[0];
+                navBtnSpan.innerText = userName;
+                userLoginNavBtn.style.borderColor = "var(--neon-blue)";
+            } else {
+                navBtnSpan.innerText = t.lblNavLogin;
+                userLoginNavBtn.style.borderColor = "#2d265c";
+            }
+            
+            if (currentActiveItem) {
+                updateCommentInputZoneUI();
+            }
+        });
+
+        function updateCommentInputZoneUI() {
+            const zone = document.getElementById('comment-input-zone');
+            const t = translations[currentLang];
+            const user = auth.currentUser;
+            
+            if (user) {
+                zone.innerHTML = `
+                    <textarea id="new-comment-text" rows="3" placeholder="${t.commentPlaceholder}" style="width: 100%; background: #0c0a1a; border: 1px solid #2d265c; color: #fff; padding: 12px; border-radius: 10px; outline: none; font-size: 14px; resize: vertical;"></textarea>
+                    <button id="btn-submit-comment" class="btn-submit" style="margin-top: 10px; padding: 10px 25px; width: auto; font-size: 14px;"><i class="fa-solid fa-paper-plane"></i> ${t.btnPostComment}</button>
+                `;
+                document.getElementById('btn-submit-comment').addEventListener('click', submitUserCommentToServer);
+            } else {
+                zone.innerHTML = `
+                    <div style="background: rgba(255, 71, 87, 0.06); border: 1px dashed var(--accent-color); padding: 15px; border-radius: 10px; text-align: center; color: var(--text-muted); font-size: 14px; font-weight: 600;">
+                        <p style="margin-bottom: 10px;">${t.authRequiredComment}</p>
+                        <button onclick="document.getElementById('auth-modal').classList.remove('hidden')" class="btn-lang" style="margin: 0 auto; background: var(--accent-color); border-color: var(--accent-color);"><i class="fa-solid fa-user-plus"></i> ${t.lblNavLogin}</button>
+                    </div>
+                `;
+            }
+        }
+
+        function submitUserCommentToServer() {
+            const commentText = document.getElementById('new-comment-text').value.trim();
+            const user = auth.currentUser;
+            
+            if (!commentText) return;
+            if (!user || !currentActiveItem) return;
+            
+            const commentData = {
+                uid: user.uid,
+                name: user.displayName || user.email.split('@')[0],
+                text: commentText,
+                timestamp: firebase.database.ServerValue.TIMESTAMP
+            };
+            
+            database.ref('comments/' + currentActiveItem.id).push(commentData)
+            .then(() => {
+                document.getElementById('new-comment-text').value = '';
+            })
+            .catch((err) => alert("Comment Error: " + err.message));
+        }
+
+        function loadCommentsForActiveItem(itemId) {
+            if (currentCommentsRef) currentCommentsRef.off();
+            
+            const container = document.getElementById('comments-list-container');
+            const t = translations[currentLang];
+            container.innerHTML = `<p style="color: var(--text-muted); font-size: 14px;">${t.loadingComments}</p>`;
+            
+            currentCommentsRef = database.ref('comments/' + itemId);
+            currentCommentsRef.on('value', (snapshot) => {
+                container.innerHTML = '';
+                const data = snapshot.val();
+                
+                if (!data) {
+                    container.innerHTML = `<p style="color: var(--text-muted); font-size: 13px; text-align: center; padding: 10px;">${t.noCommentsYet}</p>`;
+                    return;
+                }
+                
+                Object.keys(data).forEach((key) => {
+                    const c = data[key];
+                    const commentDate = new Date(c.timestamp).toLocaleDateString(currentLang === 'ar' ? 'ar-EG' : 'en-US', {
+                        year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'
+                    });
+                    
+                    const commentCard = document.createElement('div');
+                    commentCard.style.background = 'rgba(255,255,255,0.02)';
+                    commentCard.style.padding = '15px';
+                    commentCard.style.borderRadius = '10px';
+                    commentCard.style.border = '1px solid #1f1947';
+                    commentCard.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 13px;">
+                            <strong style="color: var(--neon-blue); display: flex; align-items: center; gap: 6px;"><i class="fa-solid fa-circle-user" style="font-size: 16px;"></i> ${c.name}</strong>
+                            <span style="color: var(--text-muted); font-size: 11px;">${commentDate}</span>
+                        </div>
+                        <p style="color: #e5e5e5; font-size: 14px; line-height: 1.5; white-space: pre-wrap; padding-right: 5px;">${c.text}</p>
+                    `;
+                    container.appendChild(commentCard);
+                });
+            });
+        }
+
+        applyLanguage();
+    </script>
+</body>
+</html>
