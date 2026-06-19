@@ -2394,5 +2394,38 @@
 
         applyLanguage();
     </script>
+    <audio id="bg-music" loop>
+    <source src="01 Hollow Knight (Title Theme).mp3" type="audio/mpeg">
+</audio>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const music = document.getElementById('bg-music');
+        
+        // ضبط مستوى الصوت ليكون خافتاً وهادئاً جداً (0.15 تعني 15% من الحجم الأصلي)
+        if (music) {
+            music.volume = 0.35;
+        }
+
+        // دالة لتشغيل الموسيقى فور تفاعل المستخدم مع الموقع لتخطي قيود المتصفح
+        const startMusic = () => {
+            if (music && music.paused) {
+                music.play().then(() => {
+                    // بمجرد بدء التشغيل بنجاح، يتم إزالة المستمعين لتجنب تكرار الدالة
+                    document.removeEventListener('click', startMusic);
+                    document.removeEventListener('keydown', startMusic);
+                    document.removeEventListener('touchstart', startMusic);
+                }).catch(error => {
+                    console.log("لم يتم تشغيل الصوت تلقائياً بعد: ", error);
+                });
+            }
+        };
+
+        // الاستماع لأي تفاعل من المستخدم (ضغطة ماوس، لمس الشاشة، أو ضغط زر)
+        document.addEventListener('click', startMusic);
+        document.addEventListener('keydown', startMusic);
+        document.addEventListener('touchstart', startMusic);
+    });
+</script>
 </body>
 </html>
