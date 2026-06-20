@@ -2427,5 +2427,87 @@
         document.addEventListener('touchstart', startMusic);
     });
 </script>
+    <audio id="bg-music" loop>
+    <source src="bg-music.mp3" type="audio/mpeg">
+</audio>
+
+<button id="music-toggle" title="كتم/تفعيل الموسيقى" style="
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 9999;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: var(--card-bg, #181436);
+    border: 2px solid var(--neon-blue, #00c3ff);
+    color: var(--text-color, #ffffff);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    box-shadow: 0 0 10px var(--neon-blue, rgba(0, 195, 255, 0.3));
+    transition: all 0.3s ease;
+">
+    <i id="mute-icon" class="fa-solid fa-volume-xmark"></i>
+</button>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const music = document.getElementById('bg-music');
+        const toggleBtn = document.getElementById('music-toggle');
+        const muteIcon = document.getElementById('mute-icon');
+        
+        // ضبط مستوى الصوت ليكون خافتاً (15%)
+        if (music) music.volume = 0.15;
+
+        // دالة لتحديث أيقونة الزر بناءً على حالة الصوت
+        const updateIcon = () => {
+            if (music.paused || music.muted) {
+                muteIcon.className = 'fa-solid fa-volume-xmark';
+                toggleBtn.style.borderColor = 'var(--accent-color, #ff4757)';
+                toggleBtn.style.boxShadow = '0 0 10px var(--accent-glow, rgba(255, 71, 87, 0.3))';
+            } else {
+                muteIcon.className = 'fa-solid fa-volume-high';
+                toggleBtn.style.borderColor = 'var(--neon-blue, #00c3ff)';
+                toggleBtn.style.boxShadow = '0 0 10px var(--neon-blue, rgba(0, 195, 255, 0.3))';
+            }
+        };
+
+        // دالة لتشغيل الموسيقى عند أول تفاعل للمستخدم مع الصفحة
+        const startMusic = () => {
+            if (music && music.paused) {
+                music.play().then(() => {
+                    updateIcon();
+                    // إزالة مستمعات التفاعل بعد بدء التشغيل بنجاح
+                    document.removeEventListener('click', startMusic);
+                    document.removeEventListener('keydown', startMusic);
+                    document.removeEventListener('touchstart', startMusic);
+                }).catch(err => console.log("في انتظار تفاعل المستخدم لتشغيل الصوت."));
+            }
+        };
+
+        // الاستماع لأول تفاعل لتشغيل الصوت تلقائياً
+        document.addEventListener('click', startMusic);
+        document.addEventListener('keydown', startMusic);
+        document.addEventListener('touchstart', startMusic);
+
+        // برمجة زر كتم/تشغيل الصوت عند الضغط عليه
+        toggleBtn.addEventListener('click', (e) => {
+            // منع انتشار الضغطة حتى لا تتداخل مع دالة startMusic الأولى
+            e.stopPropagation(); 
+            
+            if (music.paused) {
+                // إذا كانت الموسيقى متوقفة بسبب قيود المتصفح، نقوم بتشغيلها
+                music.play().then(() => updateIcon());
+            } else {
+                // عمل كتم أو إلغاء كتم
+                music.muted = !music.muted;
+                updateIcon();
+            }
+        });
+    });
+</script>
 </body>
 </html>
